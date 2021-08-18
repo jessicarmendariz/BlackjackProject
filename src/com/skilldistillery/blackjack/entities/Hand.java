@@ -18,7 +18,7 @@ public abstract class Hand {
 		cards.clear();
 	}
 	
-	public abstract getHandValue();
+	public abstract int getHandValue();
 	public String toString() {
 		return "Hand [cards=" + getCards() + "]";
 	}

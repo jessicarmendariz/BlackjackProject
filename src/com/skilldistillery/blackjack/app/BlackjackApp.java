@@ -1,23 +1,24 @@
 package com.skilldistillery.blackjack.app;
 
 import java.util.Scanner;
+import com.skilldistillery.blackjack.entities.*;
 
 public class BlackjackApp {
 
-	public Player p1;
-	public Dealer d;
+	public Playing p1;
+	public Dealing d;
 	public Deck deck;
 	public Scanner kb;
 
 	public static void main(String[] args) {
 		BlackjackApp blackJack = new BlackjackApp();
-		blackjack.run();
+		blackJack.run();
 	}
 
 	public void run() {
 		kb = new Scanner(System.in);
-		this.p1 = new Player();
-		this.d = new Dealer();
+		this.p1 = new Playing();
+		this.d = new Dealing();
 		this.deck = new Deck();
 
 		System.out.println("Welcome to Brotherly Love Blackjack");
@@ -40,11 +41,11 @@ public class BlackjackApp {
 		this.p1.hand.addCard(this.deck.dealCard());
 		this.d.dealerHand.addCard(this.deck.dealCard());
 		this.p1.hand.addCard(this.deck.dealCard());
-		this.d.dealerHand.addCard(this.deck.dealCard);
+		this.d.dealerHand.addCard(this.deck.dealCard());
 		System.out.println("Dealer has: ");
-		this.d.showCardValueRank();
+		this.d.ShowCardValueRank();
 		System.out.println("You have ");
-		this.p1.showCardValueRank();
+		this.p1.ShowCardValueRank();
 		checkHand();
 	}
 
@@ -75,25 +76,25 @@ public class BlackjackApp {
 		}
 		
 		if (this.p1.hand.bust() || !this.p1.hand.isBlackJack()) {
-			hitOrStay();
+			hitOrStay();}
 		}
 
 	private void whoWins() {
 
 		if (this.p1.hand.bust() || this.d.dealerHand.isBlackJack()
-				|| !this.d.dealerHand.bust() && this.d.dealerHand.getHandVal() > this.p1.hand.getHandVal()) {
+				|| !this.d.dealerHand.bust() && this.d.dealerHand.getHandValue() > this.p1.hand.getHandValue()) {
 			this.d.showHand();
 			d.dealerWins();
 		}
 
 		if (this.p1.hand.isBlackJack() || this.d.dealerHand.bust()
-				|| !this.p1.hand.bust() && this.p1.hand.getHandVal() > this.d.dealerHand.getHandVal()) {
+				|| !this.p1.hand.bust() && this.p1.hand.getHandValue() > this.d.dealerHand.getHandValue()) {
 			this.d.showHand();
 			p1.playerWins();
 
 		}
 
-		if (this.p1.hand.getHandVal() == this.d.dealerHand.getHandVal()) {
+		if (this.p1.hand.getHandValue() == this.d.dealerHand.getHandValue()) {
 			this.d.showHand();
 			System.out.println("Push");
 		}

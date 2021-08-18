@@ -4,7 +4,7 @@ public class Playing {
 
 	public BlackjackHand hand;
 
-	public Player() {
+	public Playing() {
 		this.hand = new BlackjackHand();
 	}
 
